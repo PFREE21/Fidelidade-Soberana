@@ -3,283 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fidelidade Soberana - Programa de Lealdade">
-    <meta name="theme-color" content="#007bff">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="/icons/icon-192x192.png">
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
     <title>Fidelidade Soberana</title>
+    <link rel="manifest" href="manifest.json">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --primary-color: #007bff;
-            --secondary-color: #28a745;
-            --danger-color: #dc3545;
-            --dark-color: #343a40;
-            --light-color: #f8f9fa;
-            --text-color: #212529;
+            --primary: #0a2540;
+            --accent: #f57c00;
+            --text: #e0e7ff;
+            --card: #112233;
+            --success: #22c55e;
         }
-
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: var(--text-color);
-            background-color: var(--light-color);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a1525 0%, #112233 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px 15px;
             line-height: 1.6;
         }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color), #0056b3);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 0.95rem;
-            opacity: 0.95;
-        }
-
+        
         .container {
-            max-width: 1200px;
+            max-width: 820px;
             margin: 0 auto;
-            padding: 1rem;
         }
-
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+        
+        header {
+            text-align: center;
+            margin-bottom: 28px;
+            padding: 10px 0;
         }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        
+        h1 {
+            font-size: 2.35rem;
+            color: white;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
         }
-
-        .card h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        
+        .tagline {
+            color: #94a3b8;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
         }
-
+        
+        .philosophy {
+            max-width: 620px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            color: #64748b;
+            background: rgba(17, 34, 51, 0.6);
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid #334455;
+        }
+        
         .balance {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .balance-item {
-            background: var(--light-color);
-            padding: 1rem;
-            border-radius: 8px;
+            background: var(--card);
+            border-radius: 20px;
+            padding: 28px 24px;
             text-align: center;
+            margin-bottom: 24px;
+            border: 1px solid #334455;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
-        .balance-item h3 {
-            color: var(--dark-color);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+        
+        .points-label {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 4px;
         }
-
-        .balance-item .amount {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        
+        .points {
+            font-size: 3.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 8px;
         }
-
-        .rewards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .reward-item {
-            background: var(--light-color);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .reward-item h3 {
-            color: var(--dark-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .reward-item p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .btn {
+        
+        .level {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
+            background: #1e3a5f;
+            color: #a5b4fc;
+            padding: 7px 20px;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 6px;
+            border: 1px solid #334455;
+        }
+        
+        .section {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 22px;
+            border: 1px solid #334455;
+        }
+        
+        h2 {
+            color: #a5b4fc;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #334455;
+            padding-bottom: 10px;
+        }
+        
+        .reward {
+            background: #1a3344;
+            padding: 18px 20px;
+            border-radius: 14px;
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .reward:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 124, 0, 0.12);
+            border: 1px solid #f57c00;
+        }
+        
+        .reward-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: white;
+        }
+        
+        .reward-info p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        
+        .redeem-btn {
+            background: var(--accent);
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 11px 22px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            min-width: 110px;
         }
-
-        .btn:hover {
-            background-color: #0056b3;
+        
+        .redeem-btn:hover {
+            background: #e66a00;
+            transform: scale(1.03);
         }
-
-        .btn-secondary {
-            background-color: var(--secondary-color);
+        
+        .demo-section {
+            background: #0f1f2e;
+            border: 1px dashed #475569;
         }
-
-        .btn-secondary:hover {
-            background-color: #218838;
+        
+        .demo-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-
-        footer {
-            background-color: var(--dark-color);
+        
+        .demo-btn {
+            background: #1e3a5f;
+            color: #a5b4fc;
+            border: 1px solid #334455;
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .demo-btn:hover {
+            background: #2a4a6f;
+            border-color: #f57c00;
             color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
         }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-
-            .balance {
-                grid-template-columns: 1fr;
-            }
-
-            .rewards-grid {
-                grid-template-columns: 1fr;
-            }
+        
+        .history {
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 6px;
         }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 2rem;
+        
+        .history-item {
+            padding: 13px 0;
+            border-bottom: 1px solid #334455;
+            font-size: 0.95rem;
         }
-
-        .loading.active {
+        
+        .history-item:last-child {
+            border-bottom: none;
+        }
+        
+        .history-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .history-action {
+            flex: 1;
+        }
+        
+        .history-action strong {
             display: block;
+            margin-bottom: 2px;
         }
-
-        .spinner {
-            border: 4px solid var(--light-color);
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
+        
+        .history-time {
+            font-size: 0.8rem;
+            color: #64748b;
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        
+        .history-amount {
+            font-weight: 700;
+            font-size: 1.05rem;
+            white-space: nowrap;
+            padding-top: 2px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .reset-btn {
+            background: transparent;
+            color: #ef4444;
+            border: 1px solid #ef4444;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.2s;
+        }
+        
+        .reset-btn:hover {
+            background: #ef4444;
+            color: white;
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .points { font-size: 2.9rem; }
+            .reward {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .redeem-btn {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>💳 Fidelidade Soberana</h1>
-        <p>Seu programa de lealdade exclusivo</p>
-    </header>
-
     <div class="container">
-        <div class="card">
-            <h2>Bem-vindo ao Programa!</h2>
-            <p>Acumule pontos a cada compra e desfrute de benefícios exclusivos.</p>
-        </div>
-
-        <div class="card">
-            <h2>Seu Saldo</h2>
-            <div class="balance">
-                <div class="balance-item">
-                    <h3>Pontos Disponíveis</h3>
-                    <div class="amount">0</div>
-                </div>
-                <div class="balance-item">
-                    <h3>Nível</h3>
-                    <div class="amount">Bronze</div>
-                </div>
+        <header>
+            <h1>Fidelidade Soberana</h1>
+            <p class="tagline">Sua lealdade. Suas regras.</p>
+            
+            <div class="philosophy">
+                Programas tradicionais de fidelidade são extração disfarçada de benefício: a empresa controla as regras, inflaciona pontos e pode acabar com tudo da noite pro dia. 
+                Aqui é diferente. <strong>Seus pontos são seus.</strong> Sem servidor central. Sem rastreamento. Soberania real — como no Bitcoin: <em>not your keys, not your coins</em>.
             </div>
+        </header>
+
+        <div class="balance">
+            <div class="points-label">Pontos Acumulados</div>
+            <div class="points" id="points">2480</div>
+            <div class="level" id="level">Nível Soberano II</div>
         </div>
 
-        <div class="card">
+        <div class="section">
             <h2>Recompensas Disponíveis</h2>
-            <div class="rewards-grid">
-                <div class="reward-item">
-                    <h3>🎁 Desconto 5%</h3>
-                    <p>500 pontos</p>
+            
+            <div class="reward">
+                <div class="reward-info">
+                    <h3>Resgate de 500 pontos</h3>
+                    <p>50.000 sats via Lightning (demo)</p>
                 </div>
-                <div class="reward-item">
-                    <h3>🎯 Desconto 10%</h3>
-                    <p>1000 pontos</p>
+                <button class="redeem-btn" onclick="redeem(500)">Resgatar</button>
+            </div>
+            
+            <div class="reward">
+                <div class="reward-info">
+                    <h3>Resgate de 1.200 pontos</h3>
+                    <p>Suporte técnico prioritário por 3 meses</p>
                 </div>
-                <div class="reward-item">
-                    <h3>🌟 Bônus Especial</h3>
-                    <p>2000 pontos</p>
+                <button class="redeem-btn" onclick="redeem(1200)">Resgatar</button>
+            </div>
+            
+            <div class="reward">
+                <div class="reward-info">
+                    <h3>Resgate de 2.500 pontos</h3>
+                    <p>1 hora de consultoria soberana 1:1</p>
                 </div>
+                <button class="redeem-btn" onclick="redeem(2500)">Resgatar</button>
             </div>
         </div>
 
-        <div class="card">
-            <h2>Ações Rápidas</h2>
-            <button class="btn">Ver Histórico</button>
-            <button class="btn btn-secondary" style="margin-left: 0.5rem;">Resgatar Prêmio</button>
+        <div class="section demo-section">
+            <h2>Demonstração (teste o sistema)</h2>
+            <p style="color:#94a3b8; margin-bottom:14px; font-size:0.95rem;">
+                Seus pontos e histórico ficam salvos apenas no seu navegador (localStorage). 
+                Feche a aba e volte — tudo continua lá. Soberania de verdade.
+            </p>
+            <div class="demo-buttons">
+                <button class="demo-btn" onclick="addTestPoints(250)">+250 pontos</button>
+                <button class="demo-btn" onclick="addTestPoints(500)">+500 pontos</button>
+                <button class="demo-btn" onclick="addTestPoints(1000)">+1.000 pontos</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Histórico de Movimentações</h2>
+            <div class="history" id="history">
+                <!-- preenchido via JS -->
+            </div>
+        </div>
+
+        <div class="footer">
+            Construído com mentalidade soberana • Seus dados nunca saem do seu dispositivo<br>
+            <button class="reset-btn" onclick="resetAllData()">Resetar todos os dados (demo)</button>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Fidelidade Soberana. Todos os direitos reservados.</p>
-    </footer>
-
     <script>
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('Service Worker registered:', registration);
-                    })
-                    .catch(error => {
-                        console.log('Service Worker registration failed:', error);
-                    });
+        // Estado
+        let points = 2480;
+        let history = [];
+
+        // Carregar do localStorage
+        function loadData() {
+            const savedPoints = localStorage.getItem('fs_points');
+            if (savedPoints !== null) {
+                points = parseInt(savedPoints, 10);
+            }
+            
+            const savedHistory = localStorage.getItem('fs_history');
+            if (savedHistory) {
+                history = JSON.parse(savedHistory);
+            } else {
+                // Primeira vez: mensagem de boas-vindas
+                history = [
+                    {
+                        time: new Date().toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit'}) + ' ' + 
+                              new Date().toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'}),
+                        action: "Bem-vindo à Fidelidade Soberana",
+                        amount: 0
+                    }
+                ];
+            }
+        }
+
+        // Salvar no localStorage
+        function saveData() {
+            localStorage.setItem('fs_points', points);
+            localStorage.setItem('fs_history', JSON.stringify(history));
+        }
+
+        // Calcular nível
+        function getLevel(p) {
+            if (p >= 5000) return "Nível Soberano V";
+            if (p >= 3000) return "Nível Soberano IV";
+            if (p >= 2000) return "Nível Soberano III";
+            if (p >= 1000) return "Nível Soberano II";
+            return "Nível Soberano I";
+        }
+
+        // Atualizar interface
+        function updateUI() {
+            document.getElementById('points').textContent = points;
+            document.getElementById('level').textContent = getLevel(points);
+        }
+
+        // Adicionar ao histórico
+        function addToHistory(action, amount) {
+            const now = new Date();
+            const time = now.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit'}) + ' ' + 
+                        now.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+            
+            history.unshift({
+                time: time,
+                action: action,
+                amount: amount
+            });
+            
+            // Limitar a 12 entradas
+            if (history.length > 12) history.pop();
+            
+            renderHistory();
+        }
+
+        // Renderizar histórico
+        function renderHistory() {
+            const container = document.getElementById('history');
+            container.innerHTML = '';
+            
+            if (history.length === 0) {
+                container.innerHTML = '<p style="color:#64748b; padding:10px 0;">Nenhum movimento registrado ainda.</p>';
+                return;
+            }
+            
+            history.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                
+                const isPositive = item.amount > 0;
+                const isZero = item.amount === 0;
+                const color = isZero ? '#64748b' : (isPositive ? '#22c55e' : '#f57c00');
+                const sign = isPositive ? '+' : (isZero ? '' : '');
+                
+                div.innerHTML = `
+                    <div class="history-row">
+                        <div class="history-action">
+                            <strong>${item.action}</strong>
+                            <div class="history-time">${item.time}</div>
+                        </div>
+                        <div class="history-amount" style="color: ${color}">
+                            ${sign}${item.amount}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
             });
         }
 
-        // Check if app is installed
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            console.log('App can be installed');
-        });
+        // Resgatar pontos
+        function redeem(cost) {
+            if (points >= cost) {
+                points -= cost;
+                addToHistory(`Resgate de ${cost} pontos`, -cost);
+                updateUI();
+                saveData();
+                
+                // Feedback visual simples
+                const balanceEl = document.querySelector('.balance');
+                balanceEl.style.transition = 'all 0.1s';
+                balanceEl.style.boxShadow = '0 0 0 3px rgba(245, 124, 0, 0.4)';
+                setTimeout(() => {
+                    balanceEl.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+                }, 600);
+                
+            } else {
+                alert('Pontos insuficientes para este resgate.');
+            }
+        }
 
-        window.addEventListener('appinstalled', () => {
-            console.log('App was installed');
-        });
+        // Adicionar pontos de teste
+        function addTestPoints(amount) {
+            points += amount;
+            addToHistory(`Pontos ganhos (demonstração)`, amount);
+            updateUI();
+            saveData();
+        }
+
+        // Resetar tudo (demo)
+        function resetAllData() {
+            if (confirm('Tem certeza que quer resetar todos os pontos e histórico? Isso é só para teste.')) {
+                localStorage.removeItem('fs_points');
+                localStorage.removeItem('fs_history');
+                location.reload();
+            }
+        }
+
+        // Inicialização
+        function init() {
+            loadData();
+            updateUI();
+            renderHistory();
+            
+            // Registrar Service Worker (PWA offline)
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js').catch(() => {});
+            }
+            
+            // Dica no console (só pra quem abre DevTools)
+            console.log('%c[Fidelidade Soberana] Seus dados estão 100% no seu navegador. Soberania real.', 'color:#64748b');
+        }
+
+        // Iniciar quando a página carregar
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
