@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fidelidade Soberana - Programa de Lealdade">
+    <meta name="theme-color" content="#007bff">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <title>Fidelidade Soberana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745;
+            --danger-color: #dc3545;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --text-color: #212529;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .balance {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .balance-item {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .balance-item h3 {
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .balance-item .amount {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .reward-item {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .reward-item h3 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .reward-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .balance {
+                grid-template-columns: 1fr;
+            }
+
+            .rewards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid var(--light-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💳 Fidelidade Soberana</h1>
+        <p>Seu programa de lealdade exclusivo</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Bem-vindo ao Programa!</h2>
+            <p>Acumule pontos a cada compra e desfrute de benefícios exclusivos.</p>
+        </div>
+
+        <div class="card">
+            <h2>Seu Saldo</h2>
+            <div class="balance">
+                <div class="balance-item">
+                    <h3>Pontos Disponíveis</h3>
+                    <div class="amount">0</div>
+                </div>
+                <div class="balance-item">
+                    <h3>Nível</h3>
+                    <div class="amount">Bronze</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Recompensas Disponíveis</h2>
+            <div class="rewards-grid">
+                <div class="reward-item">
+                    <h3>🎁 Desconto 5%</h3>
+                    <p>500 pontos</p>
+                </div>
+                <div class="reward-item">
+                    <h3>🎯 Desconto 10%</h3>
+                    <p>1000 pontos</p>
+                </div>
+                <div class="reward-item">
+                    <h3>🌟 Bônus Especial</h3>
+                    <p>2000 pontos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Ações Rápidas</h2>
+            <button class="btn">Ver Histórico</button>
+            <button class="btn btn-secondary" style="margin-left: 0.5rem;">Resgatar Prêmio</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Fidelidade Soberana. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+
+        // Check if app is installed
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('App can be installed');
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('App was installed');
+        });
+    </script>
+</body>
+</html>
