@@ -13,41 +13,24 @@
         .header-right { text-align: right; font-size: 14px; }
         .header-right .name { font-weight: 600; }
         .header-right .since { font-size: 12px; opacity: 0.75; }
-        .success-banner { background: #10b981; color: white; margin: 16px; padding: 14px 18px; border-radius: 16px; display: flex; align-items: flex-start; gap: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
-        .success-banner .icon { width: 28px; height: 28px; background: rgba(255,255,255,0.25); border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+        .success-banner { background: #10b981; color: white; margin: 16px; padding: 14px 18px; border-radius: 16px; display: flex; align-items: flex-start; gap: 12px; }
+        .success-banner .icon { width: 28px; height: 28px; background: rgba(255,255,255,0.25); border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
         .success-banner .content { flex: 1; font-size: 14.5px; line-height: 1.4; }
-        .success-banner .time { font-size: 12px; opacity: 0.85; margin-top: 2px; }
         .container { max-width: 480px; margin: 0 auto; padding: 0 16px; }
-        .balance-card { background: white; border-radius: 20px; padding: 24px 22px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
-        .balance-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .balance-header .label { font-size: 15px; color: #475569; }
-        .ativo-badge { background: #dcfce7; color: #166534; font-size: 12px; padding: 3px 11px; border-radius: 9999px; font-weight: 600; }
-        .points-value { font-size: 42px; font-weight: 700; color: #0f172a; line-height: 1; margin-bottom: 6px; }
-        .sats-value { font-size: 15px; color: #64748b; }
-        .prontos-badge { display: inline-block; background: #fef3c7; color: #92400e; font-size: 12.5px; padding: 4px 12px; border-radius: 9999px; margin-top: 10px; font-weight: 600; }
-        .philosophy { background: white; border-radius: 16px; padding: 15px 18px; margin-bottom: 22px; font-size: 13.5px; line-height: 1.5; color: #334155; border: 1px solid #e2e8f0; }
-        .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 30px; }
-        .action-card { border-radius: 18px; padding: 20px 18px; text-align: center; cursor: pointer; transition: transform 0.2s; border: 1px solid #e2e8f0; }
-        .action-card:active { transform: scale(0.97); }
-        .action-card.restaurant { background: #166534; color: white; border: none; }
-        .action-card.bitcoin { background: white; color: #0d3b2e; }
-        .action-card .icon { font-size: 28px; margin-bottom: 10px; }
-        .action-card .title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
-        .action-card .subtitle { font-size: 12.5px; opacity: 0.85; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding: 8px 0 12px; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
-        .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #64748b; text-decoration: none; padding: 4px 12px; }
-        .nav-item.active { color: #166534; font-weight: 600; }
-        .nav-item .icon { font-size: 20px; margin-bottom: 2px; }
-        .history-screen, .profile-screen { display: none; }
-        .history-item { background: white; padding: 14px 18px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #e2e8f0; font-size: 14px; }
-        .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #0f172a; color: white; padding: 12px 24px; border-radius: 9999px; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 100; display: none; }
+        .balance-card { background: white; border-radius: 20px; padding: 24px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .points-value { font-size: 42px; font-weight: 700; color: #0f172a; }
+        .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .action-card { border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; }
+        .action-card.restaurant { background: #166534; color: white; }
+        .action-card.bitcoin { background: white; color: #0d3b2e; border: 1px solid #e2e8f0; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding: 8px 0; }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="header-left">
             <div class="logo">∞</div>
-            <div><div style="font-size:22px; font-weight:700;">Soberana</div></div>
+            <div><div style="font-size:22px;font-weight:700;">Soberana</div></div>
         </div>
         <div class="header-right">
             <div class="name">Pedro</div>
@@ -55,83 +38,41 @@
         </div>
     </div>
 
-    <div class="success-banner" id="success-banner" onclick="addPointsFromQR()">
+    <div class="success-banner">
         <div class="icon">📷</div>
         <div class="content">
             <strong>QR Code escaneado com sucesso</strong><br>
-            Pagamento da Mesa 17 confirmado • <strong>+142 pontos creditados</strong>
-            <div class="time">17:42</div>
+            Pagamento da Mesa 17 confirmado • <strong>+142 pontos</strong>
         </div>
     </div>
 
     <div class="container">
         <div class="balance-card">
-            <div class="balance-header">
-                <div class="label">Seu saldo atual</div>
-                <div class="ativo-badge">✓ ATIVO</div>
-            </div>
-            <div class="points-value" id="points">1.426</div>
-            <div class="sats-value">≈ <span id="sats">121.210</span> sats</div>
-            <div class="prontos-badge">prontos para resgate</div>
+            <div>Seu saldo atual</div>
+            <div class="points-value" id="points">1426</div>
+            <div>prontos para resgate</div>
         </div>
 
-        <div class="philosophy">
+        <div style="margin:20px 0; font-size:15px;">
             Seus pontos viram desconto no seu restaurante preferido.
         </div>
 
         <div class="actions">
-            <div class="action-card restaurant" onclick="redeemDiscount()">
-                <div class="icon">🏷️</div>
-                <div class="title">Resgatar<br>descontos no restaurante</div>
+            <div class="action-card restaurant" onclick="alert('Desconto ativado!')">
+                <div style="font-size:32px;">🏷️</div>
+                <div><strong>Descontos no restaurante</strong></div>
             </div>
-            <div class="action-card bitcoin" onclick="redeemBitcoin()">
-                <div class="icon">₿</div>
-                <div class="title">Resgatar em<br>Bitcoin Lightning</div>
-                <div class="subtitle">Direto na sua carteira</div>
+            <div class="action-card bitcoin" onclick="alert('Resgate Lightning em breve')">
+                <div style="font-size:32px;">₿</div>
+                <div><strong>Bitcoin Lightning</strong></div>
             </div>
         </div>
     </div>
 
-    <div class="bottom-nav">
-        <a href="#" class="nav-item active" onclick="showScreen('home')"><div class="icon">🏠</div><div>Início</div></a>
-        <a href="#" class="nav-item" onclick="showScreen('history')"><div class="icon">🕒</div><div>Histórico</div></a>
-        <a href="#" class="nav-item" onclick="showScreen('profile')"><div class="icon">👤</div><div>Perfil</div></a>
+    <div class="bottom-nav" style="display:flex;justify-content:space-around;padding:10px;background:white;border-top:1px solid #ddd;">
+        <div>🏠 Início</div>
+        <div>🕒 Histórico</div>
+        <div>👤 Perfil</div>
     </div>
-
-    <div class="container history-screen" id="history-screen">
-        <h3 style="margin:20px 0 12px; color:#166534;">Histórico de Movimentações</h3>
-        <div id="history-list"></div>
-    </div>
-
-    <div class="container profile-screen" id="profile-screen">
-        <div style="background:white; padding:24px; border-radius:16px; margin-top:20px; border:1px solid #e2e8f0;">
-            <h3 style="margin-bottom:16px;">Pedro • Cliente desde 2024</h3>
-            <p style="color:#64748b; font-size:14px; line-height:1.6;">
-                Seus pontos são seus.<br><br>
-                Resgate em Bitcoin Lightning ou desconto no restaurante quando quiser.<br><br>
-                Simples assim.
-            </p>
-            <button onclick="resetData()" style="margin-top:20px; background:#fee2e2; color:#991b1b; border:none; padding:10px 18px; border-radius:10px; font-weight:600;">Resetar dados (demo)</button>
-        </div>
-    </div>
-
-    <div class="toast" id="toast"></div>
-
-    <script>
-        let points = 1450; let history = [];
-        function formatPoints(n){return n.toLocaleString('pt-BR');}
-        function updateBalance(){document.getElementById('points').textContent=formatPoints(points); const sats=Math.round(points*85); document.getElementById('sats').textContent=sats.toLocaleString('pt-BR');}
-        function loadData(){const sp=localStorage.getItem('fs_points'); if(sp!==null)points=parseInt(sp); const sh=localStorage.getItem('fs_history'); if(sh)history=JSON.parse(sh); updateBalance();}
-        function saveData(){localStorage.setItem('fs_points',points); localStorage.setItem('fs_history',JSON.stringify(history));}
-        function addToHistory(action,amount){const now=new Date(); const time=now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); history.unshift({time,action,amount}); if(history.length>15)history.pop(); saveData();}
-        function showToast(msg){const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; setTimeout(()=>t.style.display='none',2200);}
-        function redeemBitcoin(){if(points<500){alert('Pontos insuficientes.');return;} const cost=500; const satsOut=cost*85; points-=cost; addToHistory('Resgate Lightning',-cost); updateBalance(); saveData(); showToast('Enviados '+satsOut.toLocaleString('pt-BR')+' sats via Lightning!');}
-        function redeemDiscount(){if(points<300){alert('Pontos insuficientes.');return;} const cost=300; points-=cost; addToHistory('Desconto no restaurante',-cost); updateBalance(); saveData(); showToast('Desconto ativado!');}
-        function addPointsFromQR(){points+=142; addToHistory('Pagamento Mesa 17 (QR)',142); updateBalance(); saveData(); showToast('+142 pontos creditados!'); const b=document.getElementById('success-banner'); b.style.transition='all 0.2s'; b.style.opacity='0.3'; setTimeout(()=>b.style.opacity='1',400);}
-        function showScreen(screen){document.querySelector('.container').style.display='block'; document.getElementById('history-screen').style.display='none'; document.getElementById('profile-screen').style.display='none'; document.querySelectorAll('.nav-item').forEach(el=>el.classList.remove('active')); if(screen==='home'){document.querySelector('.nav-item').classList.add('active'); document.querySelector('.container').style.display='block';} else if(screen==='history'){document.querySelectorAll('.nav-item')[1].classList.add('active'); document.querySelector('.container').style.display='none'; const hs=document.getElementById('history-screen'); hs.style.display='block'; const list=document.getElementById('history-list'); list.innerHTML=''; if(history.length===0){list.innerHTML='<p style="color:#64748b;padding:20px 0;">Nenhum movimento ainda.</p>';return;} history.forEach(item=>{const div=document.createElement('div'); div.className='history-item'; const sign=item.amount>0?'+':''; const color=item.amount>0?'#166534':'#b91c1c'; div.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;"><div><strong>${item.action}</strong><br><span style="font-size:12px;color:#64748b;">${item.time}</span></div><div style="color:${color};font-weight:700;">${sign}${item.amount}</div></div>`; list.appendChild(div);});} else if(screen==='profile'){document.querySelectorAll('.nav-item')[2].classList.add('active'); document.querySelector('.container').style.display='none'; document.getElementById('profile-screen').style.display='block';}}
-        function resetData(){if(confirm('Resetar todos os dados?')){localStorage.removeItem('fs_points'); localStorage.removeItem('fs_history'); location.reload();}}
-        function init(){loadData(); if(history.length===0){history.push({time:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}),action:'Bem-vindo à Fidelidade Soberana',amount:0}); saveData();}}
-        window.onload=init;
-    </script>
 </body>
 </html>
