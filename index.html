@@ -118,7 +118,7 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        let points = 1426; let history = [];
+        let points = 1450; let history = [];
         function formatPoints(n){return n.toLocaleString('pt-BR');}
         function updateBalance(){document.getElementById('points').textContent=formatPoints(points); const sats=Math.round(points*85); document.getElementById('sats').textContent=sats.toLocaleString('pt-BR');}
         function loadData(){const sp=localStorage.getItem('fs_points'); if(sp!==null)points=parseInt(sp); const sh=localStorage.getItem('fs_history'); if(sh)history=JSON.parse(sh); updateBalance();}
